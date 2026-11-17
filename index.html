@@ -11,12 +11,10 @@
     
     <!-- PWA Meta Tags & Manifest Link -->
     <meta name="theme-color" content="#030712">
-    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Dalcon Water">
-    <link rel="apple-touch-icon" href="consorcia logo 2019 retouch_101058.jpg">
-    <link rel="icon" type="image/jpeg" href="consorcia logo 2019 retouch_101058.jpg">
+    <link rel="apple-touch-icon" href="https://placehold.co/192x192/083344/06b6d4?text=💧">
     <link rel="manifest" id="pwa-manifest">
 
     <style>
@@ -55,15 +53,14 @@
     </div>
 
     <!-- Header -->
-    <header class="bg-cyan-950/85 backdrop-blur-md border-b border-cyan-500/20 py-3.5 px-6 shadow-lg relative z-10">
+    <header class="bg-cyan-950/80 backdrop-blur-md border-b border-cyan-500/20 py-4 px-6 shadow-lg relative z-10">
         <div class="max-w-4xl mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <img src="consorcia logo 2019 retouch_101058.jpg" alt="Barangay Consorcia Logo" class="w-10 h-10 rounded-full object-cover border border-cyan-400/40 shadow-md shadow-cyan-500/20">
+                <div class="bg-gradient-to-tr from-cyan-600 to-blue-500 p-2.5 rounded-xl text-white font-bold text-xl shadow-lg shadow-cyan-500/30">💧</div>
                 <div>
-                    <h1 class="font-bold text-base sm:text-lg tracking-tight text-white flex items-center gap-1.5">
+                    <h1 class="font-bold text-lg tracking-tight text-white flex items-center gap-1.5">
                         Dalcon Waterworks
                     </h1>
-                    <p class="text-[10px] text-cyan-300/80 uppercase tracking-widest">Barangay Consorcia LGU</p>
                 </div>
             </div>
             <div class="flex items-center space-x-2 sm:space-x-3">
@@ -74,7 +71,7 @@
                 <div id="user-badge" class="hidden flex items-center space-x-3 bg-cyan-950/90 px-3.5 py-1.5 rounded-full border border-cyan-500/30 shadow-inner">
                     <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-sm shadow-emerald-400"></span>
                     <span id="nav-username" class="text-sm font-medium text-cyan-100"></span>
-                    <button onclick="logout()" class="text-xs text-rose-400 hover:text-rose-300 ml-2 font-semibold cursor-pointer">Logout</button>
+                    <button onclick="logout()" class="text-xs text-rose-400 hover:text-rose-300 ml-2 font-semibold">Logout</button>
                 </div>
             </div>
         </div>
@@ -108,8 +105,8 @@
             <div class="absolute -bottom-24 -left-24 w-48 h-48 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
 
             <div class="text-center mb-6 relative z-10">
-                <div class="inline-block p-1.5 bg-cyan-500/10 border border-cyan-500/20 rounded-2xl mb-3 shadow-inner">
-                    <img src="consorcia logo 2019 retouch_101058.jpg" alt="Logo" class="w-14 h-14 rounded-full object-cover mx-auto">
+                <div class="inline-flex p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-2xl text-cyan-400 text-2xl mb-2 shadow-inner">
+                    💧
                 </div>
                 <h2 class="text-2xl font-bold tracking-tight text-white">Consumer Login</h2>
                 <p id="db-status-text" class="text-xs text-cyan-400/80 mt-1">Connecting to live Google Sheet database...</p>
@@ -209,7 +206,7 @@
 
     <!-- Footer -->
     <footer class="text-center py-4 text-xs text-cyan-400/60 border-t border-cyan-500/10 mt-auto bg-cyan-950/40 backdrop-blur-md relative z-10">
-        Dalcon Waterworks Management System • Barangay Consorcia &copy; 2026
+        Dalcon Waterworks Management System &copy; 2026 • Pure Aquatic Intelligence
     </footer>
 
     <!-- Script Logic -->
@@ -220,28 +217,6 @@
         let readingsDB = {};
         let isMobileView = false;
         let loggedInConsumer = null;
-
-        // Generate PWA Manifest dynamically to ensure logo link resolves properly
-        function setupPWA() {
-            const manifestData = {
-                name: "Dalcon Waterworks Portal",
-                short_name: "Dalcon Water",
-                start_url: window.location.href,
-                display: "standalone",
-                background_color: "#030712",
-                theme_color: "#030712",
-                icons: [
-                    {
-                        src: "consorcia logo 2019 retouch_101058.jpg",
-                        sizes: "192x192 512x512",
-                        type: "image/jpeg"
-                    }
-                ]
-            };
-            const stringManifest = JSON.stringify(manifestData);
-            const blob = new Blob([stringManifest], {type: 'application/json'});
-            document.getElementById('pwa-manifest').href = URL.createObjectURL(blob);
-        }
 
         function formatDate(dateStr) {
             if (!dateStr) return "-";
@@ -343,7 +318,6 @@
         }
 
         function initApp() {
-            setupPWA();
             const source = document.getElementById('app-source').innerHTML;
             document.getElementById('desktop-view-container').innerHTML = source;
             document.getElementById('app-content-slot').innerHTML = source;
